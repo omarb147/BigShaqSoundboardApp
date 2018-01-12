@@ -8,20 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		8BAE37712008F91E00120CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE37702008F91E00120CFB /* AppDelegate.swift */; };
-		8BAE37732008F91E00120CFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE37722008F91E00120CFB /* ViewController.swift */; };
+		8BAE37732008F91E00120CFB /* SoundPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE37722008F91E00120CFB /* SoundPlayVC.swift */; };
 		8BAE37762008F91E00120CFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE37742008F91E00120CFB /* Main.storyboard */; };
 		8BAE37782008F91E00120CFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE37772008F91E00120CFB /* Assets.xcassets */; };
 		8BAE377B2008F91E00120CFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE37792008F91E00120CFB /* LaunchScreen.storyboard */; };
+		8BAE3783200908FA00120CFB /* Lazer84 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE3782200908FA00120CFB /* Lazer84 2.ttf */; };
+		8BAE3785200910DC00120CFB /* SoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE3784200910DC00120CFB /* SoundCell.swift */; };
+		8BAE378B2009111600120CFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE378A2009111600120CFB /* Constants.swift */; };
+		8BAE378E200911A100120CFB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE378D200911A100120CFB /* Sound.swift */; };
+		8BAE379020091AE500120CFB /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE378F20091AE500120CFB /* SoundService.swift */; };
+		8BAE379320091EAA00120CFB /* bigshaq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379220091EAA00120CFB /* bigshaq.mp3 */; };
+		8BAE379520091EB700120CFB /* asnee.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379420091EB700120CFB /* asnee.mp3 */; };
+		8BAE379720091EE100120CFB /* frizbee.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379620091EE100120CFB /* frizbee.mp3 */; };
+		8BAE379920091F2E00120CFB /* ducking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379820091F2E00120CFB /* ducking.mp3 */; };
+		8BAE379B20091F5500120CFB /* boom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379A20091F5500120CFB /* boom.mp3 */; };
+		8BAE379D20091F9600120CFB /* trap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BAE379C20091F9600120CFB /* trap.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8BAE376D2008F91E00120CFB /* BigShaqApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigShaqApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAE37702008F91E00120CFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BAE37722008F91E00120CFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BAE37722008F91E00120CFB /* SoundPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayVC.swift; sourceTree = "<group>"; };
 		8BAE37752008F91E00120CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BAE37772008F91E00120CFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BAE377A2008F91E00120CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BAE377C2008F91E00120CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BAE3782200908FA00120CFB /* Lazer84 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lazer84 2.ttf"; sourceTree = "<group>"; };
+		8BAE3784200910DC00120CFB /* SoundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCell.swift; sourceTree = "<group>"; };
+		8BAE378A2009111600120CFB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8BAE378D200911A100120CFB /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		8BAE378F20091AE500120CFB /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
+		8BAE379220091EAA00120CFB /* bigshaq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bigshaq.mp3; sourceTree = "<group>"; };
+		8BAE379420091EB700120CFB /* asnee.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = asnee.mp3; sourceTree = "<group>"; };
+		8BAE379620091EE100120CFB /* frizbee.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frizbee.mp3; sourceTree = "<group>"; };
+		8BAE379820091F2E00120CFB /* ducking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ducking.mp3; sourceTree = "<group>"; };
+		8BAE379A20091F5500120CFB /* boom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boom.mp3; sourceTree = "<group>"; };
+		8BAE379C20091F9600120CFB /* trap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trap.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +76,73 @@
 		8BAE376F2008F91E00120CFB /* BigShaqApp */ = {
 			isa = PBXGroup;
 			children = (
+				8BAE3788200910F100120CFB /* Utilities */,
+				8BAE3787200910EB00120CFB /* Model */,
+				8BAE3786200910E600120CFB /* View */,
+				8BAE378C2009112400120CFB /* Controller */,
 				8BAE37702008F91E00120CFB /* AppDelegate.swift */,
-				8BAE37722008F91E00120CFB /* ViewController.swift */,
 				8BAE37742008F91E00120CFB /* Main.storyboard */,
 				8BAE37772008F91E00120CFB /* Assets.xcassets */,
 				8BAE37792008F91E00120CFB /* LaunchScreen.storyboard */,
 				8BAE377C2008F91E00120CFB /* Info.plist */,
 			);
 			path = BigShaqApp;
+			sourceTree = "<group>";
+		};
+		8BAE3786200910E600120CFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE3784200910DC00120CFB /* SoundCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BAE3787200910EB00120CFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE378D200911A100120CFB /* Sound.swift */,
+				8BAE378F20091AE500120CFB /* SoundService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BAE3788200910F100120CFB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE379120091CA700120CFB /* Sounds */,
+				8BAE37892009110300120CFB /* Fonts */,
+				8BAE378A2009111600120CFB /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8BAE37892009110300120CFB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE3782200908FA00120CFB /* Lazer84 2.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8BAE378C2009112400120CFB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE37722008F91E00120CFB /* SoundPlayVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8BAE379120091CA700120CFB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE379220091EAA00120CFB /* bigshaq.mp3 */,
+				8BAE379420091EB700120CFB /* asnee.mp3 */,
+				8BAE379620091EE100120CFB /* frizbee.mp3 */,
+				8BAE379820091F2E00120CFB /* ducking.mp3 */,
+				8BAE379A20091F5500120CFB /* boom.mp3 */,
+				8BAE379C20091F9600120CFB /* trap.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,8 +204,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BAE379B20091F5500120CFB /* boom.mp3 in Resources */,
+				8BAE379D20091F9600120CFB /* trap.mp3 in Resources */,
+				8BAE379920091F2E00120CFB /* ducking.mp3 in Resources */,
 				8BAE377B2008F91E00120CFB /* LaunchScreen.storyboard in Resources */,
+				8BAE379720091EE100120CFB /* frizbee.mp3 in Resources */,
+				8BAE379320091EAA00120CFB /* bigshaq.mp3 in Resources */,
+				8BAE3783200908FA00120CFB /* Lazer84 2.ttf in Resources */,
 				8BAE37782008F91E00120CFB /* Assets.xcassets in Resources */,
+				8BAE379520091EB700120CFB /* asnee.mp3 in Resources */,
 				8BAE37762008F91E00120CFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,8 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BAE37732008F91E00120CFB /* ViewController.swift in Sources */,
+				8BAE378E200911A100120CFB /* Sound.swift in Sources */,
+				8BAE379020091AE500120CFB /* SoundService.swift in Sources */,
+				8BAE3785200910DC00120CFB /* SoundCell.swift in Sources */,
+				8BAE37732008F91E00120CFB /* SoundPlayVC.swift in Sources */,
 				8BAE37712008F91E00120CFB /* AppDelegate.swift in Sources */,
+				8BAE378B2009111600120CFB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
