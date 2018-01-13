@@ -7,29 +7,34 @@
 //
 
 import UIKit
-import AVFoundation
 
-class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
+class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate{
 
     
     //Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Variables
-    var audioPlayer : AVAudioPlayer?
+    //var audioPlayer : AVAudioPlayer?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SoundService.instance.populateSounds()
-        
+        SoundDataService.instance.populateSounds()
+         let longPressRemixGestureRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecoginser:)))
         
       
         collectionView.delegate = self
         collectionView.dataSource = self
+        longPressRemixGestureRecogniser.delegate = self
+        longPressRemixGestureRecogniser.minimumPressDuration = 1
+        longPressRemixGestureRecogniser.delaysTouchesBegan = true
+        self.collectionView.addGestureRecognizer(longPressRemixGestureRecogniser)
         
         
+        
+       
         //Set up collectionViewlayout
         let layout = UICollectionViewFlowLayout()
         let celldimension = UIScreen.main.bounds.width/3
@@ -42,29 +47,31 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
         
     }
 
+    
+    //CollectionView Functions
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SoundService.instance.allSounds.count
+        return SoundDataService.instance.allSounds.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SoundCell", for: indexPath) as? SoundCell else {return UICollectionViewCell() }
         
-        cell.configureCell(sound: SoundService.instance.allSounds[indexPath.row])
+        cell.configureCell(sound: SoundDataService.instance.allSounds[indexPath.row])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let soundAssetName = SoundService.instance.allSounds[indexPath.row].assetLbl else {return}
+        guard let soundAssetName = SoundDataService.instance.allSounds[indexPath.row].assetLbl else {return}
         guard let cell = collectionView.cellForItem(at: indexPath) as? SoundCell else {return}
         
         cell.animateOverlay(duration: 0.2)
-        playsound(soundName:soundAssetName)
+        AudioPlayerService.instance.playsound(soundName: soundAssetName)
         
         
         
@@ -72,22 +79,47 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
     
     
     
-    func playsound(soundName:String){
-        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {return}
+    
+    //Sound SetUp functions
+    
+//    func playsound(soundName:String){
+//        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {return}
+//        
+//        do {
+//            audioPlayer = try AVAudioPlayer(contentsOf: url)
+//            audioPlayer?.enableRate = true
+//            audioPlayer?.rate = 0.5
+//            audioPlayer?.play()
+//        }catch{
+//            print("Something Wrong with file")
+//        
+//        }
+//        
+//    }
+    
+    
+    //Segue Functions
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.enableRate = true
-            audioPlayer?.rate = 0.5
-            audioPlayer?.play()
-        }catch{
-            print("Something Wrong with file")
+    }
+    
+    @objc func handleLongPress(gestureRecoginser:UILongPressGestureRecognizer){
         
+        if gestureRecoginser.state != UIGestureRecognizerState.ended {
+            return
+        }
+        
+        let point = gestureRecoginser.location(in: self.collectionView)
+        
+        if let indexPath = self.collectionView.indexPathForItem(at: point) as NSIndexPath? {
+            SoundDataService.instance.selectedSound = SoundDataService.instance.allSounds[indexPath.row]
+            performSegue(withIdentifier: TO_REMIX_VC, sender: nil)
+            
+            
         }
         
     }
-    
-    
     
     
     

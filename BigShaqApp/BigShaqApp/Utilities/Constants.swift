@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+
+let TO_REMIX_VC = "toRemixVC"

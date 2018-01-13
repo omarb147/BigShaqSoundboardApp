@@ -13,7 +13,14 @@ struct Sound {
     
     var name:String!
     var assetLbl:String!
+    var pace:Double = 1
+    var pitch:Double = 1
+    var reverb:Double = 1
+    var isOnlySoundPlaying = true
     
-    
+    init(name:String, assetLbl:String) {
+        self.assetLbl = assetLbl
+        self.name = name
+    }
     
 }

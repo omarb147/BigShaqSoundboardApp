@@ -9,30 +9,27 @@
 import Foundation
 
 
-class SoundService {
+class SoundDataService {
     
     
-    static var instance = SoundService()
+    static var instance = SoundDataService()
     
     var favouriteSounds = [Sound]()
     var allSounds = [Sound]()
+    var selectedSound:Sound?
     
     
-    func populateSounds(){
+    func populateSounds() {
         allSounds.append(Sound(name: "trap,trap,trap", assetLbl: "trap"))
         allSounds.append(Sound(name: "big shaq", assetLbl:"bigshaq"))
         allSounds.append(Sound(name: "Asnee", assetLbl: "asnee"))
         allSounds.append(Sound(name: "He's Got The Frizbee", assetLbl:"frizbee"))
         allSounds.append(Sound(name: "You Man Were Ducking", assetLbl: "ducking"))
         allSounds.append(Sound(name: "boom", assetLbl:"boom"))
-        
-        
-        
-        
-        
-        
-        
     }
+    
+    
+    
     
     
     
