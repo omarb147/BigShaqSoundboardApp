@@ -7,20 +7,28 @@
 //
 
 import Foundation
+import AVFoundation
 
 
-struct Sound {
+class Sound {
     
     var name:String!
     var assetLbl:String!
-    var pace:Double = 1
-    var pitch:Double = 1
-    var reverb:Double = 1
+    var rate:Float = 1
+    var echo:Double = 0
+    var reverb:Double = 0
+    var distortion:Int = 0 
+    var isRemixed = false
+    var isFavourite = false
     var isOnlySoundPlaying = true
     
     init(name:String, assetLbl:String) {
         self.assetLbl = assetLbl
         self.name = name
     }
+
+    
+    
+    
     
 }

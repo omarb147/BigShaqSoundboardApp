@@ -22,7 +22,8 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
         super.viewDidLoad()
         
         SoundDataService.instance.populateSounds()
-         let longPressRemixGestureRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecoginser:)))
+        
+        let longPressRemixGestureRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecoginser:)))
         
       
         collectionView.delegate = self
@@ -33,18 +34,14 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
         self.collectionView.addGestureRecognizer(longPressRemixGestureRecogniser)
         
         
-        
        
         //Set up collectionViewlayout
-        let layout = UICollectionViewFlowLayout()
-        let celldimension = UIScreen.main.bounds.width/3
+        setupViewCollection()
         
-        layout.itemSize = CGSize(width: celldimension, height: celldimension)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        
-        collectionView.collectionViewLayout = layout
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setupViewCollection()
     }
 
     
@@ -67,35 +64,15 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let soundAssetName = SoundDataService.instance.allSounds[indexPath.row].assetLbl else {return}
+        let sound = SoundDataService.instance.allSounds[indexPath.row]
         guard let cell = collectionView.cellForItem(at: indexPath) as? SoundCell else {return}
         
         cell.animateOverlay(duration: 0.2)
-        AudioPlayerService.instance.playsound(soundName: soundAssetName)
+        AudioPlayerService.instance.playsound(sound:sound)
         
         
         
     }
-    
-    
-    
-    
-    //Sound SetUp functions
-    
-//    func playsound(soundName:String){
-//        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {return}
-//        
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: url)
-//            audioPlayer?.enableRate = true
-//            audioPlayer?.rate = 0.5
-//            audioPlayer?.play()
-//        }catch{
-//            print("Something Wrong with file")
-//        
-//        }
-//        
-//    }
     
     
     //Segue Functions
@@ -122,9 +99,35 @@ class SoundPlayVC: UIViewController,UICollectionViewDelegate, UICollectionViewDa
     }
     
     
+    @IBAction func settingsBtnPressed(_ sender: Any) {
+        let selectedSoundName = SoundDataService.instance.selectedSound?.name ?? "asnee"
+        let selectedSoundAssetLbl = SoundDataService.instance.selectedSound?.assetLbl ?? "asnee"
+        
+        print(selectedSoundName)
+        print(selectedSoundAssetLbl)
+            SoundDataService.instance.testSound = Sound(name:selectedSoundName, assetLbl:selectedSoundAssetLbl)
+        
+        
+        performSegue(withIdentifier: TO_SETTINGS_VC, sender: nil)
+        
+    }
     
-    
-    
+    func setupViewCollection(){
+        
+        let numberItemsPerRow = CGFloat(SoundDataService.instance.soundsPerRowSelected)
+        let layout = UICollectionViewFlowLayout()
+        let celldimension = UIScreen.main.bounds.width/numberItemsPerRow
+        
+        layout.itemSize = CGSize(width: celldimension, height: celldimension)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        
+        collectionView.collectionViewLayout = layout
+    }
 
+    @IBAction func favouritesBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: TO_FAVOURITES_SOUND_PLAY_VC, sender: nil)
+
+    }
 }
 

@@ -18,7 +18,7 @@ class SoundCell: UICollectionViewCell {
     
     func configureCell(sound:Sound){
         soundImg.image = UIImage(named:sound.assetLbl)
-        soundLbl.text = sound.name.capitalized
+        soundLbl.text = sound.name.uppercased()
     }
     
     func animateOverlay(duration:TimeInterval){

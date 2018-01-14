@@ -20,48 +20,82 @@ class AudioPlayerService {
     var pitchPlayer:AVAudioPlayerNode!
 
     
-    func playsound(soundName:String){
+    func playsound(sound:Sound){
         
-            
         audioEngine = AVAudioEngine()
         reverbPlayer = AVAudioPlayerNode()
         echoPlayer = AVAudioPlayerNode()
         pitchPlayer = AVAudioPlayerNode()
         
         
-        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {return}
+        guard let url = Bundle.main.url(forResource: sound.assetLbl, withExtension: "mp3") else {return}
         let file = try? AVAudioFile(forReading: url)
         let buffer = AVAudioPCMBuffer(pcmFormat: file!.processingFormat, frameCapacity: AVAudioFrameCount(file!.length))
         try! file!.read(into: buffer!)
         
 
-        let reverb = AVAudioUnitReverb()
-        let echo = AVAudioUnitDelay()
-        let pitch = AVAudioUnitTimePitch()
-        let distortion = AVAudioUnitDistortion()
+        let reverbNode = AVAudioUnitReverb()
+        let echoNode = AVAudioUnitDelay()
+        let pitchNode = AVAudioUnitTimePitch()
+        let distortionNode = AVAudioUnitDistortion()
+        
+        
+        //SetUp Effects
+        
+        switch sound.distortion {
+        case 0:
+            distortionNode.wetDryMix = 0
+        case let val where val > 0 :
+            let presetNumber = sound.distortion - 1
+            guard let effect =  AVAudioUnitDistortionPreset(rawValue: presetNumber) else {return}
+            distortionNode.loadFactoryPreset(effect)
+        default:
+            return
+        }
+        
+        let reverbMuliplier = pow(sound.reverb,sound.reverb)
+        reverbNode.wetDryMix = Float(reverbMuliplier)
+       
+        
+        
+        
+//        
+//        
+//        if sound.distortionIsOn {
+//            distortionNode.loadFactoryPreset(sound.distortion)
+//        }else{
+//            distortionNode.wetDryMix = 0
+//        }
+//        
+        
+        
+        
+//
+//            reverbNode.loadFactoryPreset(sound.reverb)
+//        }else{
+//            reverbNode.wetDryMix = 0
+//        }
+//
+        pitchNode.rate = sound.rate
+        echoNode.delayTime = sound.echo
+        
+        
         
         audioEngine?.attach(reverbPlayer)
-       
         audioEngine?.attach(echoPlayer)
-        
-        echo.delayTime = 0
-        //reverb.wetDryMix = 100
-        
         audioEngine?.attach(pitchPlayer)
-        audioEngine?.attach(reverb)
-        audioEngine?.attach(echo)
-        audioEngine?.attach(pitch)
-        audioEngine?.attach(distortion)
-        distortion.loadFactoryPreset(.speechGoldenPi)
-        pitch.rate = 1
+        audioEngine?.attach(reverbNode)
+        audioEngine?.attach(echoNode)
+        audioEngine?.attach(pitchNode)
+        audioEngine?.attach(distortionNode)
         
     
             
-        audioEngine?.connect(reverbPlayer, to: reverb, format:buffer?.format)
-        audioEngine?.connect(reverb, to: echo, format: buffer?.format)
-        audioEngine?.connect(echo, to: pitch, format: buffer?.format)
-        audioEngine?.connect(pitch, to: distortion, format: buffer?.format)
-        audioEngine?.connect(distortion, to: (audioEngine?.mainMixerNode)!, format:buffer?.format)
+        audioEngine?.connect(reverbPlayer, to: reverbNode, format:buffer?.format)
+        audioEngine?.connect(reverbNode, to: echoNode, format: buffer?.format)
+        audioEngine?.connect(echoNode, to: pitchNode, format: buffer?.format)
+        audioEngine?.connect(pitchNode, to: distortionNode, format: buffer?.format)
+        audioEngine?.connect(distortionNode, to: (audioEngine?.mainMixerNode)!, format:buffer?.format)
         
         //audioEngine?.connect(echoPlayer, to: echo, format:buffer?.format)
         //audioEngine?.connect(echo, to: (audioEngine?.mainMixerNode)!, format:buffer?.format)
@@ -77,8 +111,6 @@ class AudioPlayerService {
         try! audioEngine?.start()
         
         reverbPlayer.play()
-        //echoPlayer.play()
-        //pitchPlayer.play()
         
        
         }
